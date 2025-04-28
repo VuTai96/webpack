@@ -3,7 +3,13 @@ const path = require('path');
 module.exports = {
     entry: './src/index.js',
     output: {
-        filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
+        filename: 'webpack-numbers.js',
+        globalObject: 'this',
+        library: {
+            name: 'webpackNumbers',
+            type: 'umd',
+        },
+        clean: true,
     },
 };

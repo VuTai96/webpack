@@ -1,29 +1,23 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { watch } = require('fs');
 
 module.exports = {
-    mode: 'development',
+    entry: {
+        app: './src/index.js',
+    },
     devtool: 'inline-source-map',
     devServer: {
         static: './dist',
-    },
-    entry: {
-        index: './src/index.js',
-        print: './src/print.js',
+        hot: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Development',
+            title: 'Hot Module Replacement',
         }),
     ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        publicPath: '/',
-    },
-    optimization: {
-        runtimeChunk: 'single',
     },
 };
